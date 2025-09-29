@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     
-    public enum MainMenuButtons { play, options, credits, quit }
-    public enum SocialButtons { Website, Youtube, Discord }
-    public enum OptionsButtons { back}
-    public enum CreditsButtons { back}
+    public enum MainMenuButtons { play, options, credits, quit, None };
+    public enum SocialButtons { Website, Youtube, Discord, None};
+    public enum OptionsButtons { back, None };
+    public enum CreditsButtons { back, None};
     
     public static MainMenuManager _;
     [SerializeField] private string _sceneToLoadAfterClickingPlay;
