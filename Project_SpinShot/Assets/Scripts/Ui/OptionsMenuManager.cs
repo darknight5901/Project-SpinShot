@@ -1,13 +1,9 @@
-using DG.Tweening;
-using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static AudioManager;
 public class OptionsManager : MonoBehaviour
 {
     public static OptionsManager _;
@@ -17,11 +13,12 @@ public class OptionsManager : MonoBehaviour
     public AudioMixer audioMixer;
     public Slider[] AudioSliders;
     private Resolution[] resolutions;
-    public enum OptionsTabs { Graphics, Audio, Controls, None }
-
+    public enum OptionsTabs { Graphics, Audio, Controls,MainMenu, None }
+    [SerializeField] private string _MainMenuScene;
     [SerializeField] GameObject _GraphicsMenu;
     [SerializeField] GameObject _AudioMenu;
     [SerializeField] GameObject _ControlsMenu;
+    [SerializeField] ScrollRect _OptionsScrollRect;
 
 
     private void Awake()
@@ -34,6 +31,7 @@ public class OptionsManager : MonoBehaviour
         {
             Debug.LogError("There are more than 1 OptionsMenuManager 's in the scene");
         }
+        GetComponent<ScrollRect>();
     }
     private void Start()
     {
@@ -160,6 +158,9 @@ public class OptionsManager : MonoBehaviour
         _GraphicsMenu.SetActive(menuToOpen == _GraphicsMenu);
         _AudioMenu.SetActive(menuToOpen == _AudioMenu);
         _ControlsMenu.SetActive(menuToOpen == _ControlsMenu);
+
+        var menuContent = menuToOpen.GetComponent<RectTransform>();
+        _OptionsScrollRect.content = menuContent;
         print(menuToOpen);
     }
     public void TabClicked(OptionsTabs tabClicked)
@@ -174,6 +175,9 @@ public class OptionsManager : MonoBehaviour
                 break;
             case OptionsTabs.Controls:
                 OpenMenu(_ControlsMenu);
+                break;
+            case OptionsTabs.MainMenu:
+                MainMenuClicked();
                 break;
             default:
                 OpenMenu(_GraphicsMenu);
@@ -195,5 +199,9 @@ public class OptionsManager : MonoBehaviour
         print( "VSYNC is set to " + vsync);
     }
  
+    private void MainMenuClicked()
+    {
+        SceneManager.LoadScene(_MainMenuScene);
+    }
     
 }

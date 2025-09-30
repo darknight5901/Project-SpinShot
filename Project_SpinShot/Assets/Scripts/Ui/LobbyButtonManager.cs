@@ -1,19 +1,21 @@
 using UnityEngine;
-using static MainMenuManager;
+using static LobbyButtonManager;
+using static AudioManager;
 
 public class LobbyButtonManager : MonoBehaviour
 
 {
     public static LobbyButtonManager _;
     [SerializeField] private AudioClip ButtonSound;
-    [SerializeField] LobbyManager.LobbyButtons _LobbyButtonType;
+    [SerializeField] LobbyManager.LobbyTabs _LobbyButtonType;
     private void Awake()
     {
-        
+       
     }
-    public void ButtonClicked()
+    public void TabClicked()
     {
-        LobbyManager._.ButtonClicked(_LobbyButtonType);
+        print(_LobbyButtonType + "(lobby button Manager)");
+        LobbyManager._.TabClicked(_LobbyButtonType);
           
         AudioManager._.PlaySFXClip(ButtonSound, transform, 1f);
     }

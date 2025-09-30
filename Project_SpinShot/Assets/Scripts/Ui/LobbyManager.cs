@@ -1,48 +1,70 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class LobbyManager : MonoBehaviour
 {
-    public enum LobbyButtons { Main, Settings, Skills, None, Appearance, Stats }
+    public enum LobbyTabs {None, Main, Settings, Skills,  Appearance, Stats }
     public static LobbyManager _;
-    [SerializeField] GameObject[] MenuTab;
+    [SerializeField] GameObject _LobbyTab;
+    [SerializeField] GameObject _SkillsTab;
+    [SerializeField] GameObject _AppearanceTab;
+    [SerializeField] GameObject _StatsTab;
+    [SerializeField] GameObject _SettingsTab;
 
-
-
-
-    public void ButtonClicked(LobbyButtons buttonClicked)
+    private void Awake()
     {
+        if (_ == null)
+        {
+            _ = this;
+        }
+        else
+        {
+            Debug.LogError("There are more than 1 OptionsMenuManager 's in the scene");
+        }
+    }
+    private void Start()
+    {
+        OpenMenu(_LobbyTab);
+    }
+
+    public void TabClicked(LobbyTabs buttonClicked)
+    {
+        print("was clicked");
         switch (buttonClicked)
         {
-            case LobbyButtons.Skills:
+            case LobbyTabs.Skills:
 
-                OpenMenu(MenuTab[(int)LobbyButtons.Skills], (int)LobbyButtons.Skills);
+                OpenMenu(_SkillsTab);
                 break;
-            case LobbyButtons.Settings:
-                OpenMenu(MenuTab[(int)LobbyButtons.Settings], (int)LobbyButtons.Settings);
+            case LobbyTabs.Settings:
+                OpenMenu(_SettingsTab);
                 print(buttonClicked);
                 break;
-            case LobbyButtons.Main:
-                OpenMenu(MenuTab[(int)LobbyButtons.Main], (int)LobbyButtons.Main);
+            case LobbyTabs.Main:
+                OpenMenu(_LobbyTab);
                 print(buttonClicked);
                 break;
-            case LobbyButtons.Appearance:
-                OpenMenu(MenuTab[(int)LobbyButtons.Appearance], (int)LobbyButtons.Appearance);
+            case LobbyTabs.Appearance:
+                OpenMenu(_AppearanceTab);
                 print(buttonClicked);
                 break;
-            case LobbyButtons.Stats:
-                OpenMenu(MenuTab[(int)LobbyButtons.Stats], (int)LobbyButtons.Stats);
+            case LobbyTabs.Stats:
+                OpenMenu(_StatsTab);
                 print(buttonClicked);
                 break;
 
             default:
-                print("There is no button method assigned to " + buttonClicked + ". Please assing one in LobbyManager");
+                print("There is no button method assigned to " + buttonClicked + ". Please assign one in LobbyManager");
                 break;
         }
     }
-    public void OpenMenu(GameObject menuToOpen, int i)
+    public void OpenMenu(GameObject menuToOpen)
     {
-        MenuTab[i].SetActive(menuToOpen == MenuTab[i]);
+        _AppearanceTab.SetActive(menuToOpen == _AppearanceTab);
+        _StatsTab.SetActive(menuToOpen == _StatsTab);
+        _LobbyTab.SetActive(menuToOpen == _LobbyTab);
+        _SettingsTab.SetActive(menuToOpen == _SettingsTab);
+        _SkillsTab.SetActive(menuToOpen == _SkillsTab);
       
         print(menuToOpen);
     }

@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     [Header("-------- Audio Clip -------")]
     public AudioClip music;
     public AudioClip ButtonClick;
+    public enum audioType{ Main, Music, Sfx}
     private void Awake()
     {
         if (_ == null)
@@ -17,7 +18,7 @@ public class AudioManager : MonoBehaviour
             _ = this;
         }
     }
-    public enum audioType { Main, Music, Sfx}
+    
     private void Start()
     {
        PlayMusic(music, false, transform , 1f);
@@ -33,11 +34,11 @@ public class AudioManager : MonoBehaviour
         //assign volume
         audioSource.volume = volume;
         // play sound
-        audioSource.Play();
+        audioSource.PlayOneShot(audioClip);
         //get length of clip
         float clipLength = audioSource.clip.length;
         // destroy object after done playing
-        Destroy(audioSource, clipLength);
+        Destroy(audioSource, clipLength + 1);
         print(audioSource + " should be destoryed " + clipLength);
     }
     public void PlayRandomSFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
@@ -47,7 +48,6 @@ public class AudioManager : MonoBehaviour
         AudioSource audioSource = Instantiate(SFXSource, spawnTransform.position, Quaternion.identity);
         //assign the audioClip
         audioSource.clip = audioClip[rand];   
-        
 
         //assign volume
         audioSource.volume = volume;
@@ -56,8 +56,9 @@ public class AudioManager : MonoBehaviour
         //get length of clip
         float clipLength = audioSource.clip.length;
         // destroy object after done playing
-        Destroy (audioSource, clipLength);
-        print(audioSource.name + " should be destoryed " + clipLength);
+        
+        print(audioSource.name + " should be destroyed" + clipLength);
+        Destroy(audioSource, clipLength);
     }
 
     public void PlayMusic(AudioClip audioClip,bool looping, Transform spawnTransform, float volume)
@@ -77,7 +78,7 @@ public class AudioManager : MonoBehaviour
         // destroy object after done playing
         if (!looping)
         {
-            Destroy(audioSource, clipLength);
+            Destroy(audioSource, clipLength + 1);
             print(audioSource + " should be destoryed" + clipLength);
         }
         print(audioSource + "is looping");

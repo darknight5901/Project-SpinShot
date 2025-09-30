@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2373600103749305485}
   - component: {fileID: 4674239411830622486}
   - component: {fileID: 8996968886996430386}
-  - component: {fileID: 4129426730146906376}
+  - component: {fileID: 455020749616365421}
   m_Layer: 5
   m_Name: Navigation Button
   m_TagString: Untagged
@@ -123,9 +123,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 455020749616365421}
         m_TargetAssemblyTypeName: MainMenuButtonManager, Assembly-CSharp
-        m_MethodName: ButtonClicked
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &4129426730146906376
+--- !u!114 &455020749616365421
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OptionsButtonManager
   ButtonSound: {fileID: 8300000, guid: ba2b6205f7ba0b049a42e027be19c804, type: 3}
   _ButtonType: 1
-  _OptionsButtonType: 0
+  _OptionsButtonType: 4
 --- !u!1 &6131959541104846906
 GameObject:
   m_ObjectHideFlags: 0

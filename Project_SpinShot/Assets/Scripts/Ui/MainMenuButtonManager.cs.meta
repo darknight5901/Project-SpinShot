@@ -1,2 +1,12 @@
 fileFormatVersion: 2
 guid: 943ca2737e3457d4ba929b00307cbad6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ButtonSound: {fileID: 8300000, guid: ba2b6205f7ba0b049a42e027be19c804, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
