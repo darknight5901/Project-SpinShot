@@ -167,7 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8275d65efbf41e479a57853a51e6219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SocialButtonManager
-  _ButtonType: 0
+  ButtonSound: {fileID: 8300000, guid: ba2b6205f7ba0b049a42e027be19c804, type: 3}
+  _ButtonType: 3
 --- !u!1 &3165171012143302738
 GameObject:
   m_ObjectHideFlags: 0

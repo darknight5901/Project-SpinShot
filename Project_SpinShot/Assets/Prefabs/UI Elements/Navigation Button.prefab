@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2373600103749305485}
   - component: {fileID: 4674239411830622486}
   - component: {fileID: 8996968886996430386}
+  - component: {fileID: 4129426730146906376}
   m_Layer: 5
   m_Name: Navigation Button
   m_TagString: Untagged
@@ -154,6 +155,21 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &4129426730146906376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2307018581118074365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e44fdd01980db042837899fe767e999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OptionsButtonManager
+  ButtonSound: {fileID: 8300000, guid: ba2b6205f7ba0b049a42e027be19c804, type: 3}
+  _ButtonType: 1
+  _OptionsButtonType: 0
 --- !u!1 &6131959541104846906
 GameObject:
   m_ObjectHideFlags: 0

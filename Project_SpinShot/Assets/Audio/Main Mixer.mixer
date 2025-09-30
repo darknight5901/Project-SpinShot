@@ -44,7 +44,7 @@ AudioMixerGroupController:
   m_Effects:
   - {fileID: -3086804486349632737}
   - {fileID: -2340193135611942890}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 4
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -123,7 +123,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 8
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -151,7 +151,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: bb9b1f311d643d34985812de1e08571c
   m_FloatValues:
-    04460a6400d9aa64898b829279b03483: -0.002441872
+    04460a6400d9aa64898b829279b03483: -0.30163807
     7980dca407c20f845a4e9c5800419ab0: -7.1004124
     e9ea84b6a4e0021469487ad9c6c7ff1f: 0.5
     b185f0dbfa55b6c42ac604915857c0e1: 0
@@ -173,7 +173,7 @@ AudioMixerGroupController:
   m_Effects:
   - {fileID: 8308106307607816594}
   - {fileID: -7558647416675015395}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 6
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0

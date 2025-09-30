@@ -5,12 +5,12 @@ public class OptionsButtonManager : MonoBehaviour
 
 {
     public static OptionsButtonManager _;
-    [SerializeField] AudioManager audioManager;
+    [SerializeField] private AudioClip ButtonSound;
     [SerializeField] MainMenuManager.OptionsButtons _ButtonType;
     [SerializeField] OptionsManager.OptionsTabs _OptionsButtonType;
     private void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        
     }
     public void ButtonClicked()
     {
@@ -26,7 +26,7 @@ public class OptionsButtonManager : MonoBehaviour
             MainMenuManager._.OptionsButtonClicked(_ButtonType);
             
         }
-        audioManager.PlaySFX(audioManager.ButtonClick);
+        AudioManager._.PlaySFXClip(ButtonSound, transform, 1f);
     }
 
 }

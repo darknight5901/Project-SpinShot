@@ -10,15 +10,20 @@ using UnityEngine.UI;
 using static AudioManager;
 public class OptionsManager : MonoBehaviour
 {
-    public enum OptionsTabs { Graphics, Audio, Controls, None }
-    public TMP_Dropdown resolutionDropdown;
     public static OptionsManager _;
+
+    [Header("------- Setting References -------")]
+    public TMP_Dropdown resolutionDropdown;
     public AudioMixer audioMixer;
     public Slider[] AudioSliders;
-    Resolution[] resolutions;
+    private Resolution[] resolutions;
+    public enum OptionsTabs { Graphics, Audio, Controls, None }
+
     [SerializeField] GameObject _GraphicsMenu;
     [SerializeField] GameObject _AudioMenu;
     [SerializeField] GameObject _ControlsMenu;
+
+
     private void Awake()
     {
         if (_ == null)
@@ -177,6 +182,18 @@ public class OptionsManager : MonoBehaviour
         }
     }
     
+    public void SetVSYNC(bool vsync)
+    {
+        if (vsync)
+        { 
+            QualitySettings.vSyncCount = 1; 
+        }
+        else
+        {
+            QualitySettings.vSyncCount = 0;
+        }
+        print( "VSYNC is set to " + vsync);
+    }
  
     
 }
