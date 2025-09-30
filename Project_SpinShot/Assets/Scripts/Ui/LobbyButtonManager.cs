@@ -7,7 +7,8 @@ public class LobbyButtonManager : MonoBehaviour
 {
     public static LobbyButtonManager _;
     [SerializeField] private AudioClip ButtonSound;
-    [SerializeField] LobbyManager.LobbyTabs _LobbyButtonType;
+    [SerializeField] LobbyManager.LobbyTabs _LobbyTabType;
+    [SerializeField] LobbyManager.LobbyButton _LobbyButtonType;
     private void Awake()
     {
        
@@ -15,9 +16,13 @@ public class LobbyButtonManager : MonoBehaviour
     public void TabClicked()
     {
         print(_LobbyButtonType + "(lobby button Manager)");
-        LobbyManager._.TabClicked(_LobbyButtonType);
+        LobbyManager._.TabClicked(_LobbyTabType);
           
         AudioManager._.PlaySFXClip(ButtonSound, transform, 1f);
+    }
+    public void ButtonClicked()
+    {
+        print(_LobbyButtonType);
     }
 
 }

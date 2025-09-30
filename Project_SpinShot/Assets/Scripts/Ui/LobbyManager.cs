@@ -3,7 +3,8 @@ using UnityEngine.Audio;
 
 public class LobbyManager : MonoBehaviour
 {
-    public enum LobbyTabs {None, Main, Settings, Skills,  Appearance, Stats }
+    public enum LobbyTabs { None, Main, Settings, Skills, Appearance, Stats }
+    public enum LobbyButton { None, Play, OnlineToggle, Search, Host }
     public static LobbyManager _;
     [SerializeField] GameObject _LobbyTab;
     [SerializeField] GameObject _SkillsTab;
@@ -65,7 +66,29 @@ public class LobbyManager : MonoBehaviour
         _LobbyTab.SetActive(menuToOpen == _LobbyTab);
         _SettingsTab.SetActive(menuToOpen == _SettingsTab);
         _SkillsTab.SetActive(menuToOpen == _SkillsTab);
-      
+
         print(menuToOpen);
+    }
+    public void ButtonClicked(LobbyButton buttonClicked)
+    {
+        switch (buttonClicked)
+        {
+            case LobbyButton.Play:
+
+                break;
+            case LobbyButton.OnlineToggle:
+
+                break;
+            case LobbyButton.Search:
+
+                break;
+            case LobbyButton.Host:
+
+                break;
+            default :
+                break;
+        }
+
+        
     }
 }

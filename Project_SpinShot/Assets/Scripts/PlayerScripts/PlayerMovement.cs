@@ -1,4 +1,7 @@
+using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
@@ -24,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-           movementInput = movePlayer[playerNumber].ReadValue<Vector3>();
+           movementInput = movePlayer[playerNumber].ReadValue<Vector2>();
     }
     void FixedUpdate()
     {
@@ -51,9 +54,13 @@ public class PlayerMovement : MonoBehaviour
        // }
        
     }
-    void MoveCharacter(Vector3 direction )
+    void MoveCharacter(Vector2 inputDirection )
     {
-        rb.AddForce(direction * speed ) ;
+        Vector3 MoveDirection;
+        MoveDirection = new Vector3(inputDirection.x, 0, inputDirection.y);
+        print("player" + playerNumber + " " + MoveDirection);
+        rb.AddForce(MoveDirection * speed, ForceMode.Force); ;
+        
     }
 }
 
