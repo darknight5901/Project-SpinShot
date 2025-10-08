@@ -5,13 +5,10 @@ public class OptionsButtonManager : MonoBehaviour
 
 {
     public static OptionsButtonManager _;
-    [SerializeField] private AudioClip ButtonSound;
+    [SerializeField] private AudioClip ButtonSound = null;
     [SerializeField] MainMenuManager.OptionsButtons _ButtonType;
     [SerializeField] OptionsManager.OptionsTabs _OptionsButtonType;
-    private void Awake()
-    {
-        
-    }
+    
     public void ButtonClicked()
     {
 

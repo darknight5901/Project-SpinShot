@@ -1,5 +1,7 @@
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -11,7 +13,7 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] GameObject _AppearanceTab;
     [SerializeField] GameObject _StatsTab;
     [SerializeField] GameObject _SettingsTab;
-
+    [SerializeField] private string _Testing;
     private void Awake()
     {
         if (_ == null)
@@ -74,10 +76,10 @@ public class LobbyManager : MonoBehaviour
         switch (buttonClicked)
         {
             case LobbyButton.Play:
-
+                PlayClicked();
                 break;
             case LobbyButton.OnlineToggle:
-
+                
                 break;
             case LobbyButton.Search:
 
@@ -90,5 +92,10 @@ public class LobbyManager : MonoBehaviour
         }
 
         
+    }
+    public void PlayClicked()
+    {
+        SceneManager.LoadScene(_Testing);
+        print(_Testing);
     }
 }

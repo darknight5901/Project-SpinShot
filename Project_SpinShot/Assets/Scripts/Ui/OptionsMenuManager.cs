@@ -14,7 +14,7 @@ public class OptionsManager : MonoBehaviour
     public Slider[] AudioSliders;
     private Resolution[] resolutions;
     public enum OptionsTabs { Graphics, Audio, Controls,MainMenu, None }
-    [SerializeField] private string _MainMenuScene;
+    [SerializeField] private string _MainMenuScene = null;
     [SerializeField] GameObject _GraphicsMenu;
     [SerializeField] GameObject _AudioMenu;
     [SerializeField] GameObject _ControlsMenu;
@@ -39,7 +39,7 @@ public class OptionsManager : MonoBehaviour
 
         resolutionDropdown.ClearOptions();
         int currentResolutionIndex = 0;
-        List<string> options = new List<string>();
+        List<string> options = new();
         for (int i = 0; i < resolutions.Length; i++) {
             string option = resolutions[i].width + "x" + resolutions[i].height + resolutions[i].refreshRateRatio+"hz";
             options.Add(option);
@@ -135,13 +135,11 @@ public class OptionsManager : MonoBehaviour
                 SetMusicVolume();
                 break;
         }
-    }
-
-        
+    }      
     public void SetQuality (int qualityIndex)
     {
         QualitySettings.SetQualityLevel (qualityIndex);
-        print("the qualtiy level is " + QualitySettings.GetQualityLevel());
+        print("the quality level is " + QualitySettings.GetQualityLevel());
     }
     public void SetResolution(int resolutionIndex) 
     {
@@ -181,14 +179,14 @@ public class OptionsManager : MonoBehaviour
                 break;
             default:
                 OpenMenu(_GraphicsMenu);
-                print(tabClicked + " doesnt have an assigned event yet");
+                print(tabClicked + " does not have an TAB assigned event yet");
                 break;
         }
     }
     
-    public void SetVSYNC(bool vsync)
+    public void SetVSYNC(bool Vsync)
     {
-        if (vsync)
+        if (Vsync)
         { 
             QualitySettings.vSyncCount = 1; 
         }
@@ -196,7 +194,7 @@ public class OptionsManager : MonoBehaviour
         {
             QualitySettings.vSyncCount = 0;
         }
-        print( "VSYNC is set to " + vsync);
+        print( "VSYNC is set to " + Vsync);
     }
  
     private void MainMenuClicked()

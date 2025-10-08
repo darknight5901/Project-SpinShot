@@ -3,14 +3,14 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager _;
-    [Header("-------- Audio Sourc -------")]
+    [Header("-------- Audio Source -------")]
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
     [Header("-------- Audio Clip -------")]
     public AudioClip music;
     public AudioClip ButtonClick;
-    public enum audioType{ Main, Music, Sfx}
+    public enum AudioType{ Main, Music, Sfx}
     private void Awake()
     {
         if (_ == null)
@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
         float clipLength = audioSource.clip.length;
         // destroy object after done playing
         Destroy(audioSource, clipLength + 1);
-        print(audioSource + " should be destoryed " + clipLength);
+        print(audioSource + " should be destroyed " + clipLength);
     }
     public void PlayRandomSFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
     {
@@ -79,7 +79,7 @@ public class AudioManager : MonoBehaviour
         if (!looping)
         {
             Destroy(audioSource, clipLength + 1);
-            print(audioSource + " should be destoryed" + clipLength);
+            print(audioSource + " should be destroyed" + clipLength);
         }
         print(audioSource + "is looping");
 

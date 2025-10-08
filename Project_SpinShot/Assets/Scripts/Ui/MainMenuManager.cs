@@ -10,8 +10,8 @@ public class MainMenuManager : MonoBehaviour
     public enum CreditsButtons { back, None};
     
     public static MainMenuManager _;
-    [SerializeField] private string _sceneToLoadAfterClickingPlay;
-    [SerializeField] private bool _debugMode;
+    [SerializeField] private string _sceneToLoadAfterClickingPlay = null;
+    [SerializeField] private bool _debugMode = false;
     [SerializeField] GameObject _MainMenuContainer;
     [SerializeField] GameObject _CreditsMenuContainer;
     [SerializeField] GameObject _OptionsMenuContainer;
@@ -78,7 +78,7 @@ public class MainMenuManager : MonoBehaviour
         if (websiteLink != "")
         {
             Application.OpenURL(websiteLink);
-            websiteLink = "";
+           // websiteLink = null;
         }
         
     }

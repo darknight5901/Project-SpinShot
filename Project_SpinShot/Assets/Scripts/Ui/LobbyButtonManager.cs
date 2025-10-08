@@ -9,10 +9,7 @@ public class LobbyButtonManager : MonoBehaviour
     [SerializeField] private AudioClip ButtonSound;
     [SerializeField] LobbyManager.LobbyTabs _LobbyTabType;
     [SerializeField] LobbyManager.LobbyButton _LobbyButtonType;
-    private void Awake()
-    {
-       
-    }
+   
     public void TabClicked()
     {
         print(_LobbyButtonType + "(lobby button Manager)");
@@ -22,7 +19,7 @@ public class LobbyButtonManager : MonoBehaviour
     }
     public void ButtonClicked()
     {
-        print(_LobbyButtonType);
+        LobbyManager._.ButtonClicked(_LobbyButtonType);
     }
 
 }
