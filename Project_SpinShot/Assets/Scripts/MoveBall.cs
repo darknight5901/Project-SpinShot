@@ -48,7 +48,7 @@ public class MoveBall : MonoBehaviour
     private void FixedUpdate()
     {
        
-        speed =  initialSpeed + (speedIncrease * bounceCount);
+        
         Ray ray = new(transform.position, transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, Time.deltaTime * speed, collisionMask) && usingRay)
         {
@@ -87,15 +87,34 @@ public class MoveBall : MonoBehaviour
             
         }
     }
+    public void SpeedUp(float Amount)
+    {
+        
+       
+        if (Amount < 0)
+        {
+            print(speed + "  slowdown " +
+                Amount);
+        }
+        if ( Amount  > 0)
+        {
+            print( speed + "  speedup bal  "
+                + Amount);
+        }
+
+        speed +=Amount;
+    }
 
     private void ReflectBall(Vector3 reflectDir , GameObject hitObject)
     {
+        
         // adjusts y rotation to align with reflect rotation.
         float rot =   90 -(Mathf.Atan2(reflectDir.z, reflectDir.x) * Mathf.Rad2Deg);
         Vector3 position = hitObject.transform.position;
 
         float offset = transform.position.z - position.z;
-        bounceCount ++;
+        
+        
         // use for  adding to  rot    Random.Range(-offset, offset)
             
             
@@ -104,12 +123,16 @@ public class MoveBall : MonoBehaviour
             float newOffset;
             newOffset = Random.Range(-10, 10);
             print(" Ball is too straight " + offset + newOffset + " Changed the reflect angle");
-            transform.eulerAngles = new Vector3(0, rot + (( newOffset + offset) * 1.2f), 0);
+            transform.eulerAngles = new Vector3(0, rot + (( newOffset * offset) * 1.5f), 0);
+            bounceCount ++;
+
         }
         else if (hitObject.CompareTag("Player"))
         {
-            print(" Had to RANDOMIZE IT FOR FUN" + offset * 1.2f + " Changed the reflect angle");
-            transform.eulerAngles = new Vector3(0, rot + (offset * 1.2f), 0);
+            print(" Had to RANDOMIZE IT FOR FUN" + offset  + " Changed the reflect angle");
+            transform.eulerAngles = new Vector3(0, rot + (offset * 2 ), 0);
+            bounceCount++;
+
         }
         else 
         {
@@ -117,7 +140,7 @@ public class MoveBall : MonoBehaviour
         }
             print(offset);
 
-        
+        SpeedUp(speedIncrease * bounceCount);
     }
     private void Move()
     {
