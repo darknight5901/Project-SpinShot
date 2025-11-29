@@ -11,6 +11,8 @@ public class MoveBall : MonoBehaviour
     public LayerMask collisionMask;
     public float initialSpeed = 20f;
     public float speed;
+    public Vector3 rotDirection;
+    public float spinAmount;
     public SphereCollider sc;
     public Rigidbody rb;
     [SerializeField] bool enableRandomizedStart = false;
@@ -18,6 +20,7 @@ public class MoveBall : MonoBehaviour
     [SerializeField] bool usingRay = false;
     [SerializeField] float speedIncrease = 1.01f;
     [SerializeField] int bounceCount;
+    [SerializeField] AudioClip bounceSound;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,7 +31,7 @@ public class MoveBall : MonoBehaviour
     {
         //Old Method Invoke(nameof(ResetBall), 2f);
         StartCoroutine(nameof(ResetBall), true);
-        
+        GameSystemManager._.OpenInGameUI();
     }
     private void Update()
     {
@@ -39,6 +42,10 @@ public class MoveBall : MonoBehaviour
         {
             //OldMethod Invoke(nameof(ResetBall), 1f);
             StartCoroutine(nameof(ResetBall), true);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            CalculateSpin();
         }
         
            
@@ -58,7 +65,7 @@ public class MoveBall : MonoBehaviour
 
         }
         Move();
-
+       // CalculateSpin();
         
             
         
@@ -141,6 +148,8 @@ public class MoveBall : MonoBehaviour
             print(offset);
 
         SpeedUp(speedIncrease * bounceCount);
+
+        AudioManager._.PlaySFXClip(bounceSound, transform, 1f);
     }
     private void Move()
     {
@@ -167,16 +176,16 @@ public class MoveBall : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         
         bounceCount = 0;
-        Invoke(nameof(StartBall), 1f);
+        Invoke(nameof(StartBall), 3f);
         print("Ball was RESET");
         if (enableRandomizedStart)
         {
             RandomRotation(facingLeft);
-            transform.position = new Vector3 (0, 10, 0);
+            transform.position = new Vector3 (0, 5, 0);
         }
         else
         {
-        transform.SetPositionAndRotation(new Vector3(0, 10, 0), new Quaternion(0, 0, 0, 0));
+        transform.SetPositionAndRotation(new Vector3(0, 5, 0), new Quaternion(0, 0, 0, 0));
         }
     }
    void RandomRotation(bool left)
@@ -195,6 +204,28 @@ public class MoveBall : MonoBehaviour
         }
         print("is FacingLeft?" + left);
         
+    }
+    
+    void CalculateSpin()
+    {
+       
+        
+            // rb.angularVelocity = SpinAmount;
+            rb.angularVelocity =  transform.forward * spinAmount ;
+      //  rb.AddTorque(rb.angularVelocity,ForceMode.VelocityChange);
+        rotDirection = rb.angularVelocity;
+        
+        
+        //
+        //
+    }
+    void CalculateExitVelocity(Vector3 reflectDir)
+    {
+        //get entry angle, get angular velo on y axis, then if its above (value), if i
+        //reflectDir
+
+        //calculate if its going to add or reduce speed
+
     }
 }
   

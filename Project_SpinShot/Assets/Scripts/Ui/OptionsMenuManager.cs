@@ -13,12 +13,13 @@ public class OptionsManager : MonoBehaviour
     public AudioMixer audioMixer;
     public Slider[] AudioSliders;
     private Resolution[] resolutions;
-    public enum OptionsTabs { Graphics, Audio, Controls,MainMenu, None }
+    public enum OptionsTabs { Graphics, Audio, Controls,MainMenu, Back ,None }
     [SerializeField] private string _MainMenuScene = null;
     [SerializeField] GameObject _GraphicsMenu;
     [SerializeField] GameObject _AudioMenu;
     [SerializeField] GameObject _ControlsMenu;
     [SerializeField] ScrollRect _OptionsScrollRect;
+    public GameObject _OpenedFrom;
 
 
     private void Awake()
@@ -54,6 +55,10 @@ public class OptionsManager : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
         OpenMenu(_GraphicsMenu);
+        if (_OpenedFrom == null)
+        {
+            _OpenedFrom = gameObject;
+        }
         for (int i = 0; i < AudioSliders.Length; i++)
             switch (i)
             {
@@ -156,6 +161,7 @@ public class OptionsManager : MonoBehaviour
         _GraphicsMenu.SetActive(menuToOpen == _GraphicsMenu);
         _AudioMenu.SetActive(menuToOpen == _AudioMenu);
         _ControlsMenu.SetActive(menuToOpen == _ControlsMenu);
+        _OpenedFrom.SetActive(menuToOpen == _OpenedFrom);
 
         var menuContent = menuToOpen.GetComponent<RectTransform>();
         _OptionsScrollRect.content = menuContent;
@@ -176,6 +182,13 @@ public class OptionsManager : MonoBehaviour
                 break;
             case OptionsTabs.MainMenu:
                 MainMenuClicked();
+                break;
+            case OptionsTabs.Back:
+                //OpenMenu(_OpenedFrom);
+                gameObject.SetActive(false);
+                GameSystemManager._.SetActiveUiElement(_OpenedFrom, true);
+                Destroy(gameObject);
+
                 break;
             default:
                 OpenMenu(_GraphicsMenu);
