@@ -172,11 +172,11 @@ public class MoveBall : MonoBehaviour
         if (enableRandomizedStart)
         {
             RandomRotation(facingLeft);
-            transform.position = new Vector3 (0, 10, 0);
+            transform.position = new Vector3 (0, 5, 0);
         }
         else
         {
-        transform.SetPositionAndRotation(new Vector3(0, 10, 0), new Quaternion(0, 0, 0, 0));
+        transform.SetPositionAndRotation(new Vector3(0, 5, 0), new Quaternion(0, 0, 0, 0));
         }
     }
    void RandomRotation(bool left)
