@@ -702,7 +702,7 @@ GameObject:
   - component: {fileID: 3751399810427469335}
   - component: {fileID: 1482387921601495695}
   m_Layer: 5
-  m_Name: Volume Slider
+  m_Name: Music Volume Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1259,7 +1259,7 @@ GameObject:
   - component: {fileID: 721351527360150698}
   - component: {fileID: 6426728556364530201}
   m_Layer: 5
-  m_Name: Volume Slider
+  m_Name: Master Volume Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2125,7 +2125,7 @@ GameObject:
   - component: {fileID: 5885167683909739503}
   - component: {fileID: 3442032574455756323}
   m_Layer: 5
-  m_Name: Volume Slider
+  m_Name: SFX Volume Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6686,6 +6686,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9099579337764827324}
+  - component: {fileID: 1686692869316053439}
   m_Layer: 5
   m_Name: Main Options Menu
   m_TagString: Untagged
@@ -6713,6 +6714,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1686692869316053439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227007139876514276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2dc8a28472a644d9585366bf7b044b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OptionsManager
+  resolutionDropdown: {fileID: 5523524320472441419}
+  audioMixer: {fileID: 24100000, guid: fc05aaca10cd6e14e89cba33b12bf4b9, type: 2}
+  AudioSliders:
+  - {fileID: 6426728556364530201}
+  - {fileID: 3442032574455756323}
+  - {fileID: 1482387921601495695}
+  _MainMenuScene: Main Menu
+  _GraphicsMenu: {fileID: 768351524606112965}
+  _AudioMenu: {fileID: 1320982428512029307}
+  _ControlsMenu: {fileID: 3829160477593079736}
+  _OptionsScrollRect: {fileID: 4053591555646134209}
 --- !u!1 &8369281706980802765
 GameObject:
   m_ObjectHideFlags: 0
@@ -6869,7 +6893,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7328766714120819576}
   m_HandleRect: {fileID: 5977834380226711904}
   m_Direction: 2
-  m_Value: -0.0000014241537
+  m_Value: -0.0000016276042
   m_Size: 0.75
   m_NumberOfSteps: 0
   m_OnValueChanged:

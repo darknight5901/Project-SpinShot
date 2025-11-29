@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using static GameSystemManager;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,12 +18,21 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 movementInput;
     [SerializeField] private float speed = 5f;
     public int playerNumber;
+    public PlayerInformation playerInformation;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+         rb = GetComponent<Rigidbody>();
+        playerInformation.PlayerCharacter = gameObject;
+
+       
+    }
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+      //   playerInformation = new PlayerInformation(gameObject, "Name", playerNumber, 0, Color.white, isAI);
+       
 
-        movePlayer[playerNumber].Enable();
+       // movePlayer[playerNumber].Enable();
     }
 
     // Update is called once per frame
