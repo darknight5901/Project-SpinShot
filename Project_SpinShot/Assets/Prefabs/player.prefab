@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 4936193937762963121}
   - component: {fileID: 8579916908244295859}
   - component: {fileID: 7317363313905062574}
-  - component: {fileID: 2889494460950005186}
   - component: {fileID: 6135591469034568836}
   - component: {fileID: 7777269513194147145}
+  - component: {fileID: 7888242426982263737}
+  - component: {fileID: 2889494460950005186}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -129,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ddee2618cb03f049b94da34ff8dd90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Test
-  isAI: 0
   ball: {fileID: 0}
   movePlayer:
   - m_Name: Input Action
@@ -228,11 +228,9 @@ MonoBehaviour:
       m_Action: Input Action
       m_Flags: 8
     m_Flags: 0
-  shotPower: 1
-  shotPowerMulti: 10
   movementInput: {x: 0, y: 0, z: 0}
-  speed: 60
   playerNumber: 0
+  statsManager: {fileID: 0}
   printCallLoop: 0
 --- !u!54 &8579916908244295859
 Rigidbody:
@@ -367,18 +365,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2889494460950005186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5367706005045273118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e7c199fc4ee924eabe081c4491979e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!114 &6135591469034568836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,3 +392,35 @@ MonoBehaviour:
   pInventory: {fileID: 0}
   upgradeSystem: {fileID: 0}
   pMovement: {fileID: 0}
+--- !u!114 &7888242426982263737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5367706005045273118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed0e30793806f54082a64eb6de31286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  speed: 5
+  isAI: 0
+  shotPower: 1
+  shotPowerMulti: 10
+  currency: 0
+  playerInventory: {fileID: 2889494460950005186}
+--- !u!114 &2889494460950005186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5367706005045273118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e7c199fc4ee924eabe081c4491979e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  inventorySize: 6
+  iContent: []

@@ -1,48 +1,50 @@
 using System.Collections;
-using System.IO;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
-    [SerializeField] private bool isAI;
+
     [SerializeField] private GameObject ball;
     public InputAction[] movePlayer;
-    [SerializeField] float shotPower = 1.0f;
-    [SerializeField] float shotPowerMulti = 10.0f;
     public Vector3 movementInput;
-    [SerializeField] private float speed = 5f;
     public int playerNumber;
+
+    [SerializeField] StatsManager statsManager;
+
+    private void Awake()
+    {
+
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
 
         movePlayer[playerNumber].Enable();
+
+        statsManager = GetComponent<StatsManager>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (isAI)
+        if (statsManager.isAI)
         { AiControl(); }
 
         else
         { }
         ;
-       // { movementInput = movePlayer[playerNumber].ReadValue<Vector2>(); }
+        // { movementInput = movePlayer[playerNumber].ReadValue<Vector2>(); }
     }
     public void Move(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
-        shotPower = (movementInput.x + .5f) * shotPowerMulti;
+        statsManager.shotPower = (movementInput.x + .5f) * statsManager.shotPowerMulti;
     }
     void FixedUpdate()
-    { 
+    {
         MoveCharacter(movementInput);
 
 
@@ -72,30 +74,30 @@ public class PlayerMovement : MonoBehaviour
         MoveDirection = new Vector3(0, 0, inputDirection.y);
 
         // rb.AddForce(MoveDirection * speed, ForceMode.Force);
-        rb.linearVelocity = MoveDirection * speed;
+        rb.linearVelocity = MoveDirection * statsManager.speed;
 
     }
     void ShotPower(GameObject ball)
     {
-     Rigidbody ballRB =  ball.GetComponent<Rigidbody>();
-        ball.BroadcastMessage("SpeedUp", shotPower);
-       // ballRB.AddForce(ball.transform.forward * shotPower , ForceMode.Force);
-        
-       
+        Rigidbody ballRB = ball.GetComponent<Rigidbody>();
+        ball.BroadcastMessage("SpeedUp", statsManager.shotPower);
+        // ballRB.AddForce(ball.transform.forward * shotPower , ForceMode.Force);
+
+
     }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ball") && movementInput.x != 0)
-        ShotPower(collision.gameObject);
+            ShotPower(collision.gameObject);
     }
     private void AiControl()
-      
+
     {
         float offset = Random.Range(-.5f, 1f);
-        if (ball.transform.position.z > transform.position.z + offset )
+        if (ball.transform.position.z > transform.position.z + offset)
         {
             // MoveCharacter(new Vector2 (0, 1));
-            movementInput = new Vector2( Random.Range(-1,1), 1);
+            movementInput = new Vector2(Random.Range(-1, 1), 1);
         }
         else if (ball.transform.position.z < transform.position.z - offset)
         {
@@ -111,15 +113,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool printCallLoop;
     public void StartLoop()
     {
-        StartCoroutine(PrintDebugLooper("ShotPower", (ball.transform.forward * (shotPower + shotPowerMulti * movementInput.x) + "is the shot power"), 3));
+        StartCoroutine(PrintDebugLooper("ShotPower", (ball.transform.forward * (statsManager.shotPower + statsManager.shotPowerMulti * movementInput.x) + "is the shot power"), 3));
         print(" Print Loop Started");
     }
     IEnumerator PrintDebugLooper(string callName, string callContext, float loopTime)
     {
-        
+
         int loopNumber = 0;
         printCallLoop = true;
-        WaitForSeconds waitInstruction = new (loopTime);
+        WaitForSeconds waitInstruction = new(loopTime);
         while (printCallLoop)
         {
             loopNumber++;
