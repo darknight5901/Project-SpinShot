@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Android;
 
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public enum GameState { WaitingToStart, RoundStarted, RoundInProgress, RoundEnd, ShopStart, ShopEnd, GameOver }
     public GameState currentGameState = GameState.WaitingToStart;
+    public static event Action<GameManager> OnStartNewRound; // new
 
 
     private void Awake()

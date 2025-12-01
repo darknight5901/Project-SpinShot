@@ -8,8 +8,10 @@ public class ShopManager : MonoBehaviour
     public int[,] ShopItems = new int[9, 9];
     public float currency;
     public TMP_Text coinsTxt;
+    public TMP_Text roundTxt;
     void Start()
     {
+        roundTxt.text = "Round " + GameManager._.currentRound.ToString();
         coinsTxt.text = "Coins " + currency.ToString();
         //Item Id
         ShopItems[1, 1] = 1;
@@ -50,5 +52,7 @@ public class ShopManager : MonoBehaviour
     private void OnValidate()
     {
         coinsTxt.text = "Coins " + currency.ToString();
+        roundTxt.text = "Round " + GameManager._.currentRound.ToString();
+
     }
 }
