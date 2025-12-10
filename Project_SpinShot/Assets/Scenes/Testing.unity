@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Round 0
+  m_text: Round 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2199,6 +2199,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7888242426982263737, guid: 97d273b5b6484af4c9d557e9001a1b92, type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8579916908244295859, guid: 97d273b5b6484af4c9d557e9001a1b92, type: 3}
       propertyPath: m_Constraints
       value: 116
@@ -2456,7 +2460,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 939014761}
   m_HandleRect: {fileID: 939014760}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3060,6 +3064,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 571dcfb80c1b0bd4cb56a563de454465, type: 2}
+    - target: {fileID: 7888242426982263737, guid: 97d273b5b6484af4c9d557e9001a1b92, type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8579916908244295859, guid: 97d273b5b6484af4c9d557e9001a1b92, type: 3}
       propertyPath: m_Constraints
       value: 116
