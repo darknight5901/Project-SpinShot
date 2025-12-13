@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int playerCount;
     public float roundStartTimer = 3;
     [SerializeField] Coroutine timerCoroutine;
+    Action TimerComplete;
     public enum GameState { WaitingToStart, RoundStarted, RoundInProgress, RoundEnd, ShopStart,ShopInProgress, ShopEnd, GameOver }
     public GameState currentGameState = GameState.WaitingToStart;
     public UnityEvent<GameState> RoundChangeTriggered;
@@ -33,6 +34,15 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnEnable()
+    {
+        Actions.onGameStarted += ProgressRound(GameState.RoundStarted);
+    }
+    private void OnDisable()
+    {
+        
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -69,9 +79,6 @@ public class GameManager : MonoBehaviour
                 break;
             default:
                 break;
-               
-            
-              
         }
         print($"{currentRound} | {currentGameState} | {playerCount}"); 
                 return null; 
@@ -89,9 +96,9 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                timerCoroutine = StartCoroutine(TimerCoroutineWithCallback(roundStartTimer() => {
-                    Debug.Log("Timer was ended and new thing should be started");
-                }));
+
+                timerCoroutine = StartCoroutine(TimerCoroutine(roundStartTimer, countdownTxt));
+              
 
             }
         }
@@ -101,7 +108,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    IEnumerator TimerCoroutineWithCallback(Action onComplete, float countdownDuration, TMP_Text countdownText )
+    public IEnumerator TimerCoroutine( float countdownDuration, TMP_Text countdownText)
     {
         
         float currentTime = countdownDuration;
@@ -118,7 +125,9 @@ public class GameManager : MonoBehaviour
         {
             countdownText.text = "Go!!!";
             timerCoroutine = null;
-            onComplete?.Invoke();
+            //broadcast action to whoever created this timer.
+
+
         }
 
     }
